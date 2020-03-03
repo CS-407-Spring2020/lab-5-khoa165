@@ -46,6 +46,10 @@ public class AuthenticatedActivity extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("notes", Context.MODE_PRIVATE, null);
         DBHelper dbHelper = new DBHelper(sqLiteDatabase);
 
+        // 3. Initiate the "notes" class variable using readNotes method implemented in DBHelper class. Use the username you
+        // got from SharedPreferences as a parameter to readNotes method.
+        notes = dbHelper.readNotes(username);
+
         // 4. Create an ArrayList<String> object by iterating over notes object
         ArrayList<String> displayNotes = new ArrayList<>();
         for (Note note : notes) {
